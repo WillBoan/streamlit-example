@@ -5,15 +5,27 @@ import pandas as pd
 import streamlit as st
 
 """
-# Welcome to Streamlit!
-
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
-
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+# Contend Legal Demo
 
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
+
+
+
+
+st.title(' Contend Legal Demo ')
+input_text = st.text_input('Enter Your Text: ')
+
+if input_text: 
+    title = chainT.run(input_text)
+    wikipedia_research = wikipedia.run(input_text) 
+    script = chainS.run(title=title, wikipedia_research=wikipedia_research)
+ 
+    st.write(title) 
+    st.write(script) 
+ 
+    with st.expander('Wikipedia-based exploration: '): 
+        st.info(wikipedia_research)
 
 
 with st.echo(code_location='below'):
